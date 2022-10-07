@@ -58,4 +58,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Custom ignored files
+UserSettings/Layouts/
+
 //i am writing something now anthony this is meeeeeeee
+
+*.dwlt
