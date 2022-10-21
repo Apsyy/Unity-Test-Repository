@@ -35,4 +35,5 @@ public class ObstacleGenerator : MonoBehaviour
             currentSpeed += SpeedMultiplier;
         }
     }
+   
 }
