@@ -5,6 +5,7 @@ public class PlayerScript : MonoBehaviour
     public float JumpForce;
     [SerializeField]
     bool isGrounded = false;
+    bool isAlive = true;
 
     Rigidbody2D RigidBody;
     private void Awake() //Gets Rigid body component from the player 
@@ -22,6 +23,10 @@ public class PlayerScript : MonoBehaviour
                 isGrounded = false;
             }
         }
+        if(isAlive)
+        {
+            //score code
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -31,6 +36,11 @@ public class PlayerScript : MonoBehaviour
             {
                 isGrounded = true;
             }
+        }
+        if (collision.gameObject.CompareTag("ground"))
+        {
+            isAlive = false;
+            Time.timeScale = 0;
         }
     }
 }
