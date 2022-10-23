@@ -1,17 +1,25 @@
 using UnityEngine;
+using System;
 
 public class PlayerScript : MonoBehaviour
 {
+    public static event Action onPlayerDeath; // action event used for when player dies
+
     public float JumpForce;
     [SerializeField]
     bool isGrounded = false;
-    bool isAlive = true;
-
+    
     Rigidbody2D RigidBody;
     private void Awake() //Gets Rigid body component from the player 
     {
         RigidBody = GetComponent<Rigidbody2D>();
     }
+
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
+
     // Update is called once per frame 
     void Update()
     {
@@ -23,10 +31,6 @@ public class PlayerScript : MonoBehaviour
                 isGrounded = false;
             }
         }
-        if(isAlive)
-        {
-            //score code
-        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -37,10 +41,13 @@ public class PlayerScript : MonoBehaviour
                 isGrounded = true;
             }
         }
-        if (collision.gameObject.CompareTag("ground"))
+
+        // kill player when they collide with obstacle
+        if (collision.gameObject.CompareTag("obstacle"))
         {
-            isAlive = false;
-            Time.timeScale = 0;
+            Time.timeScale = 0; // pauses game
+            Debug.Log("DEAD");
+            onPlayerDeath?.Invoke(); // invoking event when player dies
         }
     }
 }
