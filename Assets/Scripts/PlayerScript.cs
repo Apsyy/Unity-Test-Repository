@@ -37,7 +37,7 @@ public class PlayerScript : MonoBehaviour
                 isGrounded = true;
             }
         }
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("obstacle"))
         {
             isAlive = false;
             Time.timeScale = 0;
