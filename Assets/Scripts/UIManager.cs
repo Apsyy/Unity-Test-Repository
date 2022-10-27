@@ -5,19 +5,21 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public GameObject gameOverMenu;
+    public GameObject inGameUI;
 
     private void OnEnable()
     {
-        PlayerScript.onPlayerDeath += enableGameOverMenu; // call enable game over menu on death
+        PlayerScript.onPlayerDeath += enableGameOverMenu; // toggle ingame and game over ui elements
     }
 
     private void OnDisable()
     {
-        PlayerScript.onPlayerDeath -= enableGameOverMenu; // disable game over menu on level start
+        PlayerScript.onPlayerDeath -= enableGameOverMenu; // toggle ingame and game over ui elements
     }
 
     public void enableGameOverMenu()
     {
         gameOverMenu.SetActive(true); // make game over UI visible
+        inGameUI.SetActive(false); // make in game UI visible
     }
 }
