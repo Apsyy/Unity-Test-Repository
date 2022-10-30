@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI[] scoreUI;
     
     public PlayerScript player;
-
+    public ScoreBarrierScript scoreBarrier;
 
     private void Update()
     {
@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
         // for each score ui element change its text to display players current score
         for (int i = 0; i < scoreUI.Length; i++)
         {
-            scoreUI[i].text = "Score: " + player.score.ToString();
+            scoreUI[i].text = "Score: " + scoreBarrier.score.ToString();
         }
     }
 

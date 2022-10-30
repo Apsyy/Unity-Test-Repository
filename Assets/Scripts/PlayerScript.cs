@@ -12,20 +12,21 @@ public class PlayerScript : MonoBehaviour
     //for distance tracker
     public float rateOfDistance;
     public float distance;
-    
-    public int score;
 
     Rigidbody2D RigidBody;
+
+    
     private void Awake() //Gets Rigid body component from the player 
     {
         RigidBody = GetComponent<Rigidbody2D>();
+
+        
     }
 
     private void Start()
     {
         Time.timeScale = 1;
         distance = 0;
-        score = 0;
     }
 
     // Update is called once per frame 
@@ -60,12 +61,6 @@ public class PlayerScript : MonoBehaviour
             Time.timeScale = 0; // pauses game
             Debug.Log("DEAD");
             onPlayerDeath?.Invoke(); // invoking event when player dies
-        }
-
-        // player collides with score object, increase score by 1
-        if (collision.gameObject.CompareTag("score"))
-        {
-            score++;
         }
     }
     
