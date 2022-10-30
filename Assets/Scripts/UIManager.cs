@@ -1,11 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject gameOverMenu;
     public GameObject inGameUI;
+
+    public TextMeshProUGUI[] distanceUI;
+    public TextMeshProUGUI[] scoreUI;
+    
+    public PlayerScript player;
+
+
+    private void Update()
+    {
+        // for each distance ui element change its text to display the distance travelled
+        for (int i = 0; i < distanceUI.Length; i++)
+        {
+            distanceUI[i].text = "Distance: " + player.distance.ToString("F0") + "m";
+        }
+        // for each score ui element change its text to display players current score
+        for (int i = 0; i < scoreUI.Length; i++)
+        {
+            scoreUI[i].text = "Score: " + player.score.ToString();
+        }
+    }
 
     private void OnEnable()
     {

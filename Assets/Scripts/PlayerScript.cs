@@ -8,7 +8,13 @@ public class PlayerScript : MonoBehaviour
     public float JumpForce;
     [SerializeField]
     bool isGrounded = false;
+
+    //for distance tracker
+    public float rateOfDistance;
+    public float distance;
     
+    public int score;
+
     Rigidbody2D RigidBody;
     private void Awake() //Gets Rigid body component from the player 
     {
@@ -18,11 +24,17 @@ public class PlayerScript : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1;
+        distance = 0;
+        score = 0;
     }
 
     // Update is called once per frame 
     void Update()
     {
+
+        // update distance
+        distance += Time.deltaTime * rateOfDistance;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded == true)
@@ -49,5 +61,12 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("DEAD");
             onPlayerDeath?.Invoke(); // invoking event when player dies
         }
+
+        // player collides with score object, increase score by 1
+        if (collision.gameObject.CompareTag("score"))
+        {
+            score++;
+        }
     }
+    
 }
