@@ -10,7 +10,8 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI[] distanceUI;
     public TextMeshProUGUI[] scoreUI;
-    
+    public TextMeshProUGUI[] highscoreUI;
+
     public PlayerScript player;
     public ScoreBarrierScript scoreBarrier;
 
@@ -25,6 +26,11 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < scoreUI.Length; i++)
         {
             scoreUI[i].text = "Score: " + scoreBarrier.score.ToString();
+        }
+        // for each highscore ui element change its text to display players current score
+        for (int i = 0; i < highscoreUI.Length; i++)
+        {
+            highscoreUI[i].text = "HighScore: " + scoreBarrier.highScore.ToString();
         }
     }
 
