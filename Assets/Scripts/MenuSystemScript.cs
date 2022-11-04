@@ -25,4 +25,10 @@ public class MenuSystemScript : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void Reset()
+    {
+        //PlayerPrefs.DeleteAll();
+    }
+
 }

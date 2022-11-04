@@ -11,7 +11,7 @@ public class ScoreBarrierScript : MonoBehaviour
     private void Start()
     {
         score = 0;
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScore = PlayerPrefs.GetInt("highscore", 0);
     }
 
 
@@ -22,10 +22,11 @@ public class ScoreBarrierScript : MonoBehaviour
             score++;
         }
 
-        if (score > PlayerPrefs.GetInt("HighScore", score))
+        if (score > PlayerPrefs.GetInt("highscore", score))
         {
-            PlayerPrefs.SetInt("HighScore", score);
-            highScore = PlayerPrefs.GetInt("HighScore", 0);
+            PlayerPrefs.SetInt("highscore", score);
+            highScore = PlayerPrefs.GetInt("highscore", 0);
+            Debug.Log(highScore);
         }
     }
 }
