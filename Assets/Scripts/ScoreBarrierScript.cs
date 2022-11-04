@@ -25,6 +25,7 @@ public class ScoreBarrierScript : MonoBehaviour
         if (score > PlayerPrefs.GetInt("HighScore", score))
         {
             PlayerPrefs.SetInt("HighScore", score);
+            highScore = PlayerPrefs.GetInt("HighScore", 0);
         }
     }
 }
