@@ -7,15 +7,26 @@ public class Backgroundscroller : MonoBehaviour
     private BoxCollider2D boxCollider;
     private Rigidbody2D rb;
     private float width;
-    private float speed = -3f;
+    public float speed = -3f;
+    public float MinSpeed;
+    public float MaxSpeed;
+    
+
+    public float SpeedMultiplier;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        speed = MinSpeed; 
         boxCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
 
         width = boxCollider.size.x;
         rb.velocity = new Vector2(speed, 0);
+        //generateObstacle();
+    }
+    void Start()
+    {
+       
     }
 
     // Update is called once per frame
@@ -25,7 +36,12 @@ public class Backgroundscroller : MonoBehaviour
         {
             Reposition();
         }
-       
+        if (speed > MaxSpeed)
+        {
+            speed -= SpeedMultiplier;
+        }
+        
+
     }
     private void Reposition()
     {
