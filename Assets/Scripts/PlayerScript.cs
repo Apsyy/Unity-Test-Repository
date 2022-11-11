@@ -14,13 +14,10 @@ public class PlayerScript : MonoBehaviour
     public float distance;
 
     Rigidbody2D RigidBody;
-
     
     private void Awake() //Gets Rigid body component from the player 
     {
         RigidBody = GetComponent<Rigidbody2D>();
-
-        
     }
 
     private void Start()
@@ -32,7 +29,6 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
-
         // update distance
         distance += Time.deltaTime * rateOfDistance;
 
