@@ -1186,7 +1186,7 @@ MonoBehaviour:
   distance: 0
   cameraShake: {fileID: 506629979}
   landingShakeDuration: 0.2
-  landingShakeMagnitude: 0.4
+  landingShakeMagnitude: 0.3
   jumpingShakeDuration: 0.1
   jumpingShakeMagnitude: 0.2
 --- !u!82 &408773486
