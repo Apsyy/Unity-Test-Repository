@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI[] scoreUI;
     public TextMeshProUGUI[] highscoreUI;
 
+    public GameObject newUI;
+
     public PlayerScript player;
     public ScoreBarrierScript scoreBarrier;
 
@@ -30,7 +32,17 @@ public class UIManager : MonoBehaviour
         // for each highscore ui element change its text to display players current score
         for (int i = 0; i < highscoreUI.Length; i++)
         {
-            highscoreUI[i].text = "HighScore: " + scoreBarrier.highScore.ToString();
+                highscoreUI[i].text = "HighScore: " + scoreBarrier.highScore.ToString();
+        }
+        
+        // if highscore is beaten, in the game over screen display highscore to say "*NEW* HighScore: "
+        if(scoreBarrier.isNewHighScore)
+        {
+            newUI.SetActive(true);
+        }
+        else
+        {
+            newUI.SetActive(false);
         }
     }
 
