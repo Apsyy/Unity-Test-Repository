@@ -28,7 +28,7 @@ public class MenuSystemScript : MonoBehaviour
 
     public void Reset()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
     }
 
 }
