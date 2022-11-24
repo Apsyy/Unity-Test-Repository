@@ -4,7 +4,8 @@ using System;
 public class PlayerScript : MonoBehaviour
 {
     public static event Action onPlayerDeath; // action event used for when player dies
-    AudioSource jumpSound;
+    [SerializeField] AudioSource jumpSound;
+    [SerializeField] AudioSource landSound;
 
     public float JumpForce;
     [SerializeField]
@@ -26,7 +27,7 @@ public class PlayerScript : MonoBehaviour
     {
         Time.timeScale = 1;
         distance = 0;
-        jumpSound = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame 
@@ -34,14 +35,16 @@ public class PlayerScript : MonoBehaviour
     {
         // update distance
         distance += Time.deltaTime * rateOfDistance;
-
         
+
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded == true)
             {
                 if(!hasWahooed)
                 {
+                    //landSound.Play();
                     jumpSound.Play();
                     hasWahooed = true;
                 }
@@ -63,6 +66,8 @@ public class PlayerScript : MonoBehaviour
             {
                 isGrounded = true;
                 hasWahooed = false;
+                landSound.Play();
+               
             }
         }
 
