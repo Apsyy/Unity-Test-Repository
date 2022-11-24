@@ -16,6 +16,12 @@ public class PlayerScript : MonoBehaviour
     public float rateOfDistance;
     public float distance;
 
+    public CameraShakeScript cameraShake;
+    [SerializeField] private float landingShakeDuration;
+    [SerializeField] private float landingShakeMagnitude;
+    [SerializeField] private float jumpingShakeDuration;
+    [SerializeField] private float jumpingShakeMagnitude;
+
     Rigidbody2D RigidBody;
     
     private void Awake() //Gets Rigid body component from the player 
@@ -37,23 +43,21 @@ public class PlayerScript : MonoBehaviour
         distance += Time.deltaTime * rateOfDistance;
         
 
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded == true)
             {
-                if(!hasWahooed)
+                StartCoroutine(cameraShake.Shake(jumpingShakeDuration, jumpingShakeMagnitude));
+                if (!hasWahooed)
                 {
                     //landSound.Play();
                     jumpSound.Play();
                     hasWahooed = true;
                 }
-                
-                
+
                 RigidBody.AddForce(Vector2.up * JumpForce);
                 isGrounded = false;
-               
-            
+
             }
             
         }
@@ -62,18 +66,19 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ground"))
         {
+            StartCoroutine(cameraShake.Shake(landingShakeDuration, landingShakeMagnitude));
             if (isGrounded == false)
             {
                 isGrounded = true;
                 hasWahooed = false;
-                landSound.Play();
-               
+                
             }
         }
 
         // kill player when they collide with obstacle
         if (collision.gameObject.CompareTag("obstacle"))
         {
+            //StartCoroutine(cameraShake.Shake(0.2f, 0.2f)); // camera shake no work bacause of pause game
             Time.timeScale = 0; // pauses game
             Debug.Log("DEAD");
             onPlayerDeath?.Invoke(); // invoking event when player dies
