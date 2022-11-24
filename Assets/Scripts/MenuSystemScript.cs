@@ -29,6 +29,7 @@ public class MenuSystemScript : MonoBehaviour
     public void Reset()
     {
         PlayerPrefs.DeleteAll();
+        Debug.Log("Game Data Deleted");
     }
 
 }
