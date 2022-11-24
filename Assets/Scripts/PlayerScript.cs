@@ -4,10 +4,12 @@ using System;
 public class PlayerScript : MonoBehaviour
 {
     public static event Action onPlayerDeath; // action event used for when player dies
+    AudioSource jumpSound;
 
     public float JumpForce;
     [SerializeField]
     bool isGrounded = false;
+    bool hasWahooed = false;
 
     //for distance tracker
     public float rateOfDistance;
@@ -24,6 +26,7 @@ public class PlayerScript : MonoBehaviour
     {
         Time.timeScale = 1;
         distance = 0;
+        jumpSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame 
@@ -32,13 +35,24 @@ public class PlayerScript : MonoBehaviour
         // update distance
         distance += Time.deltaTime * rateOfDistance;
 
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded == true)
             {
+                if(!hasWahooed)
+                {
+                    jumpSound.Play();
+                    hasWahooed = true;
+                }
+                
+                
                 RigidBody.AddForce(Vector2.up * JumpForce);
                 isGrounded = false;
+               
+            
             }
+            
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -48,6 +62,7 @@ public class PlayerScript : MonoBehaviour
             if (isGrounded == false)
             {
                 isGrounded = true;
+                hasWahooed = false;
             }
         }
 
