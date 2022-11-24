@@ -71,6 +71,7 @@ public class PlayerScript : MonoBehaviour
             {
                 isGrounded = true;
                 hasWahooed = false;
+                landSound.Play();
                 
             }
         }
