@@ -6,7 +6,6 @@ public class ScoreBarrierScript : MonoBehaviour
 {
     public int score;
     public int highScore;
-    
 
     private void Start()
     {
@@ -22,7 +21,7 @@ public class ScoreBarrierScript : MonoBehaviour
             score++;
         }
 
-        if (score > PlayerPrefs.GetInt("highscore", score))
+        if (score > PlayerPrefs.GetInt("highscore", 0))
         {
             PlayerPrefs.SetInt("highscore", score);
             highScore = PlayerPrefs.GetInt("highscore", 0);
