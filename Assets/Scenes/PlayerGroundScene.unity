@@ -1033,9 +1033,9 @@ MonoBehaviour:
   distance: 0
   cameraShake: {fileID: 506629979}
   landingShakeDuration: 0.1
-  landingShakeMagnitude: 0.1
+  landingShakeMagnitude: 0.07
   jumpingShakeDuration: 0.1
-  jumpingShakeMagnitude: 0.1
+  jumpingShakeMagnitude: 0.07
 --- !u!82 &408773486
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1947,7 +1947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -283.68, y: -94.39996}
+  m_AnchoredPosition: {x: -406, y: -94.399}
   m_SizeDelta: {x: 524.5, y: 109.6759}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &699053564
@@ -2179,7 +2179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -622.47, y: -94.39996}
+  m_AnchoredPosition: {x: -554, y: -94.399}
   m_SizeDelta: {x: 610.1464, y: 109.6759}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &840044646
